@@ -6,3 +6,5 @@ Typed in, not cloned.
 From the book [Adaptive Code](https://www.microsoftpressstore.com/store/adaptive-code-agile-coding-with-design-patterns-and-9781509302581)
 
 Book authors [repository](https://github.com/AdaptiveCode/AdaptiveCode)
+
+[SOLID on Wikipedia](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design))
