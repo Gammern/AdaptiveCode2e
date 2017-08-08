@@ -55,4 +55,38 @@ namespace MyAccounting.Model
         }
     }
 
+    public class SilverAccount
+    {
+        private readonly int SilverTransactionCostPerPoint = 10;
+
+        public int CalculateRewardPoints(decimal amount)
+        {
+            return Math.Max((int)decimal.Floor(amount / SilverTransactionCostPerPoint),0);
+        }
+    }
+
+    public class GoldAccount
+    {
+        private readonly int GoldTransactionCostPerPoint = 5;
+        private readonly int GoldBalanceCostPerPoint = 2000;
+        public decimal Balance { get; private set; }
+
+        public int CalculateRewardPoints(decimal amount)
+        {
+            return Math.Max((int)decimal.Floor((Balance / GoldBalanceCostPerPoint) + (amount / GoldTransactionCostPerPoint)), 0);
+        }
+    }
+
+    public class PlatinumAccount
+    {
+        private readonly int PlatiniumTransactionCostPerPoint = 2;
+        private readonly int PlatiniumBalanceCostPerPoint = 1000;
+
+        public decimal Balance { get; private set; }
+
+        public int CalculateRewardPoints(decimal amount)
+        {
+            return Math.Max((int)decimal.Floor((Balance / PlatiniumBalanceCostPerPoint) + (amount / PlatiniumTransactionCostPerPoint)), 0);
+        }
+    }
 }
