@@ -11,7 +11,7 @@ namespace MyAccounting.Tests
         public void AccountShouldHaveInitialBalanceZero()
         {
             // Arrange 
-            var sut = new Account(Account.AccountType.Silver);
+            var sut = AccountBase.CreateAccount(AccountType.Silver);
 
             // Act
 
@@ -23,7 +23,7 @@ namespace MyAccounting.Tests
         public void AccountTransaction100ShouldIncreaseBalance()
         {
             // Arrange 
-            var sut = new Account(Account.AccountType.Silver);
+            var sut = AccountBase.CreateAccount(AccountType.Silver);
 
             // Act
             sut.AddTransaction(100m);
@@ -36,7 +36,7 @@ namespace MyAccounting.Tests
         public void SilverAccountTransactionShouldGenerateRewardPoints()
         {
             // Arrange 
-            var sut = new Account(Account.AccountType.Silver);
+            var sut = AccountBase.CreateAccount(AccountType.Silver);
 
             // Act
             sut.AddTransaction(100m);
@@ -48,7 +48,7 @@ namespace MyAccounting.Tests
         public void GoldAccountTransactionShouldGenerateRewardPoints()
         {
             // Arrange 
-            var sut = new Account(Account.AccountType.Gold);
+            var sut = AccountBase.CreateAccount(AccountType.Gold);
 
             // Act
             sut.AddTransaction(100m);
@@ -60,7 +60,7 @@ namespace MyAccounting.Tests
         public void PlatiniumAccountTransactionShouldGenerateRewardPoints()
         {
             // Arrange 
-            var sut = new Account(Account.AccountType.Platinum);
+            var sut = AccountBase.CreateAccount(AccountType.Platinum);
 
             // Act
             sut.AddTransaction(100m);
@@ -72,12 +72,11 @@ namespace MyAccounting.Tests
         public void PlatiniumAccountTransactionsShouldGenerateRewardPoints()
         {
             // Arrange 
-            var sut = new Account(Account.AccountType.Platinum);
+            var sut = AccountBase.CreateAccount(AccountType.Platinum);
 
             // Act
             sut.AddTransaction(10000m);
             sut.AddTransaction(1000m);
-
 
             Assert.AreEqual(5510, sut.RewardPoints);
         }

@@ -2,89 +2,71 @@
 
 namespace MyAccounting.Model
 {
-    public class Account
+    public enum AccountType
     {
-        public enum AccountType
-        {
-            Silver, Gold, Platinum
-        }
+        Silver, Gold, Platinum
+    }
 
-        private readonly AccountType type;
-
-        // Variable names should be traceable back to specifications
-        private readonly int SilverTransactionCostPerPoint = 10;
-        private readonly int GoldTransactionCostPerPoint = 5;
-        private readonly int PlatiniumTransactionCostPerPoint = 2;
-
-        private readonly int GoldBalanceCostPerPoint = 2000;
-        private readonly int PlatiniumBalanceCostPerPoint = 1000;
-
+    public abstract class AccountBase // "Base" suffix indicate abstract class
+    {
         public decimal Balance { get; private set; }
         public int RewardPoints { get; private set; }
 
-        public Account(AccountType type)
+        public static AccountBase CreateAccount(AccountType type)
         {
-            this.type = type;
+            AccountBase account = null;
+            switch (type)
+            {
+                case AccountType.Silver:
+                    account = new SilverAccount();
+                    break;
+                case AccountType.Gold:
+                    account = new GoldAccount();
+                    break;
+                case AccountType.Platinum:
+                    account = new PlatinumAccount();
+                    break;
+            }
+            return account;
         }
 
         public void AddTransaction(decimal amount)
         {
-            RewardPoints += CalculateAwardPoints(amount);
+            RewardPoints += CalculateRewardPoints(amount);
             Balance += amount;
         }
 
-        public int CalculateAwardPoints(decimal amount)
-        {
-            int points;
-            switch (type)
-            {
-                case AccountType.Silver:
-                    points = (int)decimal.Floor(amount / SilverTransactionCostPerPoint);
-                    break;
-                case AccountType.Gold:
-                    points = (int)decimal.Floor((Balance / GoldBalanceCostPerPoint) + (amount / GoldTransactionCostPerPoint));
-                    break;
-                case AccountType.Platinum:
-                    points = (int)decimal.Floor((Balance / PlatiniumBalanceCostPerPoint) + (amount / PlatiniumTransactionCostPerPoint));
-                    break;
-                default:
-                    points = 0;
-                    break;
-            }
-            return Math.Max(points, 0);
-        }
+        public abstract int CalculateRewardPoints(decimal amount);
     }
 
-    public class SilverAccount
+    public class SilverAccount : AccountBase
     {
         private readonly int SilverTransactionCostPerPoint = 10;
 
-        public int CalculateRewardPoints(decimal amount)
+        public override int CalculateRewardPoints(decimal amount)
         {
             return Math.Max((int)decimal.Floor(amount / SilverTransactionCostPerPoint),0);
         }
     }
 
-    public class GoldAccount
+    public class GoldAccount : AccountBase
     {
         private readonly int GoldTransactionCostPerPoint = 5;
         private readonly int GoldBalanceCostPerPoint = 2000;
-        public decimal Balance { get; private set; }
 
-        public int CalculateRewardPoints(decimal amount)
+        public override int CalculateRewardPoints(decimal amount)
         {
             return Math.Max((int)decimal.Floor((Balance / GoldBalanceCostPerPoint) + (amount / GoldTransactionCostPerPoint)), 0);
         }
     }
 
-    public class PlatinumAccount
+    public class PlatinumAccount : AccountBase
     {
         private readonly int PlatiniumTransactionCostPerPoint = 2;
         private readonly int PlatiniumBalanceCostPerPoint = 1000;
 
-        public decimal Balance { get; private set; }
 
-        public int CalculateRewardPoints(decimal amount)
+        public override int CalculateRewardPoints(decimal amount)
         {
             return Math.Max((int)decimal.Floor((Balance / PlatiniumBalanceCostPerPoint) + (amount / PlatiniumTransactionCostPerPoint)), 0);
         }
