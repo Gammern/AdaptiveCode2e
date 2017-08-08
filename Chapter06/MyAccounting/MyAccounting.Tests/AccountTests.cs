@@ -1,4 +1,3 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MyAccounting.Model;
 
@@ -7,11 +6,19 @@ namespace MyAccounting.Tests
     [TestClass]
     public class AccountTests
     {
+        // Listing 6-9 on page 198 is useless to me here and now. Pretend DI populate the property
+        public IAccountFactory AccountFactory { get; private set; }
+
+        public AccountTests( /* dependency injected here */)
+        {
+            AccountFactory = new AccountFactory(); // Not here. Who cares. This is just a test.
+        }
+
         [TestMethod]
         public void AccountShouldHaveInitialBalanceZero()
         {
             // Arrange 
-            var sut = AccountBase.CreateAccount(AccountType.Silver);
+            var sut = AccountFactory.CreateAccount(AccountType.Silver);
 
             // Act
 
@@ -23,7 +30,7 @@ namespace MyAccounting.Tests
         public void AccountTransaction100ShouldIncreaseBalance()
         {
             // Arrange 
-            var sut = AccountBase.CreateAccount(AccountType.Silver);
+            var sut = AccountFactory.CreateAccount(AccountType.Silver);
 
             // Act
             sut.AddTransaction(100m);
@@ -36,7 +43,7 @@ namespace MyAccounting.Tests
         public void SilverAccountTransactionShouldGenerateRewardPoints()
         {
             // Arrange 
-            var sut = AccountBase.CreateAccount(AccountType.Silver);
+            var sut = AccountFactory.CreateAccount(AccountType.Silver);
 
             // Act
             sut.AddTransaction(100m);
@@ -48,7 +55,7 @@ namespace MyAccounting.Tests
         public void GoldAccountTransactionShouldGenerateRewardPoints()
         {
             // Arrange 
-            var sut = AccountBase.CreateAccount(AccountType.Gold);
+            var sut = AccountFactory.CreateAccount(AccountType.Gold);
 
             // Act
             sut.AddTransaction(100m);
@@ -60,7 +67,7 @@ namespace MyAccounting.Tests
         public void PlatiniumAccountTransactionShouldGenerateRewardPoints()
         {
             // Arrange 
-            var sut = AccountBase.CreateAccount(AccountType.Platinum);
+            var sut = AccountFactory.CreateAccount(AccountType.Platinum);
 
             // Act
             sut.AddTransaction(100m);
@@ -72,7 +79,7 @@ namespace MyAccounting.Tests
         public void PlatiniumAccountTransactionsShouldGenerateRewardPoints()
         {
             // Arrange 
-            var sut = AccountBase.CreateAccount(AccountType.Platinum);
+            var sut = AccountFactory.CreateAccount(AccountType.Platinum);
 
             // Act
             sut.AddTransaction(10000m);
