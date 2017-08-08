@@ -10,6 +10,15 @@ namespace MyAccounting.Model
         }
 
         private readonly AccountType type;
+
+        // Variable names should be traceable back to specifications
+        private readonly int SilverTransactionCostPerPoint = 10;
+        private readonly int GoldTransactionCostPerPoint = 5;
+        private readonly int PlatiniumTransactionCostPerPoint = 2;
+
+        private readonly int GoldBalanceCostPerPoint = 2000;
+        private readonly int PlatiniumBalanceCostPerPoint = 1000;
+
         public decimal Balance { get; private set; }
         public int RewardPoints { get; private set; }
 
@@ -30,13 +39,13 @@ namespace MyAccounting.Model
             switch (type)
             {
                 case AccountType.Silver:
-                    points = (int)decimal.Floor(amount / 10);
+                    points = (int)decimal.Floor(amount / SilverTransactionCostPerPoint);
                     break;
                 case AccountType.Gold:
-                    points = (int)decimal.Floor((Balance / 10000 * 5) + (amount / 5));
+                    points = (int)decimal.Floor((Balance / GoldBalanceCostPerPoint) + (amount / GoldTransactionCostPerPoint));
                     break;
                 case AccountType.Platinum:
-                    points = (int)decimal.Floor((Balance / 10000 * 10) + (amount / 2));
+                    points = (int)decimal.Floor((Balance / PlatiniumBalanceCostPerPoint) + (amount / PlatiniumTransactionCostPerPoint));
                     break;
                 default:
                     points = 0;
