@@ -1,4 +1,6 @@
-﻿namespace MyAccounting.Model
+﻿using System;
+
+namespace MyAccounting.Model
 {
     public class AccountFactory : IAccountFactory
     {
@@ -21,6 +23,18 @@
                     break;
             }
             return account;
+        }
+
+        public AccountBase CreateAccount(string accountType)
+        {
+            try
+            {
+                return (AccountBase)Activator.CreateInstance(Type.GetType($"MyAccounting.Model.{accountType}Account"));
+            }
+            catch (Exception ex)
+            {
+                throw new ModelException($"{accountType} is not valid name for an account type", ex);
+            }
         }
     }
 }

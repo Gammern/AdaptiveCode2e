@@ -100,5 +100,29 @@ namespace MyAccounting.Tests
             Assert.AreEqual(5510, sut.RewardPoints);
         }
 
+        [TestMethod]
+        public void StringCreatedPlatiniumAccountTransactionShouldGenerateRewardPoints()
+        {
+            // Arrange 
+            var sut = AccountFactory.CreateAccount("Platinum");
+
+            // Act
+            sut.AddTransaction(100m);
+
+            Assert.AreEqual(50, sut.RewardPoints);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ModelException))]
+        public void StringCreateUnknownAccountShouldThrowModelException()
+        {
+            // Arrange 
+            var sut = AccountFactory.CreateAccount("BogusUnknown");
+
+            // Act
+
+            // Assert
+        }
+
     }
 }
