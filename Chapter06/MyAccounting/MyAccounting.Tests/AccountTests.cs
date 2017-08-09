@@ -40,6 +40,18 @@ namespace MyAccounting.Tests
         }
 
         [TestMethod]
+        public void BronzeAccountTransactionShouldGenerateRewardPoints()
+        {
+            // Arrange 
+            var sut = AccountFactory.CreateAccount(AccountType.Bronze);
+
+            // Act
+            sut.AddTransaction(100m);
+
+            Assert.AreEqual(5, sut.RewardPoints);
+        }
+
+        [TestMethod]
         public void SilverAccountTransactionShouldGenerateRewardPoints()
         {
             // Arrange 

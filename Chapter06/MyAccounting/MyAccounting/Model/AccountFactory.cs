@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyAccounting.Model
+﻿namespace MyAccounting.Model
 {
     public class AccountFactory : IAccountFactory
     {
@@ -11,6 +7,9 @@ namespace MyAccounting.Model
             AccountBase account = null;
             switch (type)
             {
+                case AccountType.Bronze:
+                    account = new BronzeAccount();
+                    break;
                 case AccountType.Silver:
                     account = new SilverAccount();
                     break;

@@ -4,7 +4,7 @@ namespace MyAccounting.Model
 {
     public enum AccountType
     {
-        Silver, Gold, Platinum
+        Bronze, Silver, Gold, Platinum
     }
 
     public abstract class AccountBase // "Base" suffix indicate abstract class
@@ -19,6 +19,16 @@ namespace MyAccounting.Model
         }
 
         public abstract int CalculateRewardPoints(decimal amount);
+    }
+
+    public class BronzeAccount : AccountBase
+    {
+        private readonly int BronzeTransactionCostPerPoint = 20;
+
+        public override int CalculateRewardPoints(decimal amount)
+        {
+            return Math.Max((int)decimal.Floor(amount / BronzeTransactionCostPerPoint), 0);
+        }
     }
 
     public class SilverAccount : AccountBase
