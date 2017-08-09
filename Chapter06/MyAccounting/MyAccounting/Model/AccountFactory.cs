@@ -10,19 +10,19 @@ namespace MyAccounting.Model
             switch (type)
             {
                 case AccountType.Standard:
-                    account = new Account(new StandardAccount());
+                    account = new Account(new StandardRewardCard());
                     break;
                 case AccountType.Bronze:
-                    account = new Account(new BronzeAccount());
+                    account = new Account(new BronzeRewardCard());
                     break;
                 case AccountType.Silver:
-                    account = new Account(new SilverAccount());
+                    account = new Account(new SilverRewardCard());
                     break;
                 case AccountType.Gold:
-                    account = new Account(new GoldAccount());
+                    account = new Account(new GoldRewardCard());
                     break;
                 case AccountType.Platinum:
-                    account = new Account(new PlatinumAccount());
+                    account = new Account(new PlatinumRewardCard());
                     break;
             }
             return account;
@@ -32,7 +32,7 @@ namespace MyAccounting.Model
         {
             try
             {
-                return new Account((IRewardCard)Activator.CreateInstance(Type.GetType($"MyAccounting.Model.{accountType}Account")));
+                return new Account((IRewardCard)Activator.CreateInstance(Type.GetType($"MyAccounting.Model.{accountType}RewardCard")));
             }
             catch (Exception ex)
             {

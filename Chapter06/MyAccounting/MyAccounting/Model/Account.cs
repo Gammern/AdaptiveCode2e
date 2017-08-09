@@ -25,14 +25,14 @@ namespace MyAccounting.Model
         }
     }
 
-    internal class StandardAccount : IRewardCard
+    internal class StandardRewardCard : IRewardCard
     {
         public int RewardPoints { get; } = 0;
 
         public void CalculateRewardPoints(decimal transactionAmount, decimal accountBalance) {}
     }
 
-    internal class BronzeAccount : IRewardCard
+    internal class BronzeRewardCard : IRewardCard
     {
         private readonly int BronzeTransactionCostPerPoint = 20;
         public int RewardPoints { get; private set; }
@@ -43,7 +43,7 @@ namespace MyAccounting.Model
         }
     }
 
-    internal class SilverAccount : IRewardCard
+    internal class SilverRewardCard : IRewardCard
     {
         private readonly int SilverTransactionCostPerPoint = 10;
         public int RewardPoints { get; private set; }
@@ -54,7 +54,7 @@ namespace MyAccounting.Model
         }
     }
 
-    internal class GoldAccount : IRewardCard
+    internal class GoldRewardCard : IRewardCard
     {
         private readonly int GoldTransactionCostPerPoint = 5;
         private readonly int GoldBalanceCostPerPoint = 2000;
@@ -66,7 +66,7 @@ namespace MyAccounting.Model
         }
     }
 
-    internal class PlatinumAccount : IRewardCard
+    internal class PlatinumRewardCard : IRewardCard
     {
         private readonly int PlatiniumTransactionCostPerPoint = 2;
         private readonly int PlatiniumBalanceCostPerPoint = 1000;
