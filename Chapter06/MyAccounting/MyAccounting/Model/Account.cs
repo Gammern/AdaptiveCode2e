@@ -4,7 +4,7 @@ namespace MyAccounting.Model
 {
     public enum AccountType
     {
-        Bronze, Silver, Gold, Platinum
+        Standard, Bronze, Silver, Gold, Platinum
     }
 
     public class Account
@@ -23,6 +23,13 @@ namespace MyAccounting.Model
             rewardCard.CalculateRewardPoints(amount, Balance);
             Balance += amount;
         }
+    }
+
+    internal class StandardAccount : IRewardCard
+    {
+        public int RewardPoints { get; } = 0;
+
+        public void CalculateRewardPoints(decimal transactionAmount, decimal accountBalance) {}
     }
 
     internal class BronzeAccount : IRewardCard

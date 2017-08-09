@@ -34,10 +34,38 @@ namespace MyAccounting.Tests
 
             // Act
             sut.AddTransaction(100m);
+            sut.AddTransaction(100m);
+
+            // Assert
+            Assert.AreEqual(200m, sut.Balance);
+        }
+
+        [TestMethod]
+        public void StandardAccountTransactionShouldIncreaseBalanceString()
+        {
+            // Arrange 
+            var sut = AccountFactory.CreateAccount("Standard");
+
+            // Act
+            sut.AddTransaction(100m);
 
             // Assert
             Assert.AreEqual(100m, sut.Balance);
         }
+
+        [TestMethod]
+        public void StandardAccountTransactionShouldIncreaseBalanceEnum()
+        {
+            // Arrange 
+            var sut = AccountFactory.CreateAccount(AccountType.Standard);
+
+            // Act
+            sut.AddTransaction(100m);
+
+            // Assert
+            Assert.AreEqual(100m, sut.Balance);
+        }
+
 
         [TestMethod]
         public void BronzeAccountTransactionShouldGenerateRewardPoints()

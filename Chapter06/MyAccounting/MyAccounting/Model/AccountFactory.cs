@@ -9,6 +9,9 @@ namespace MyAccounting.Model
             Account account = null;
             switch (type)
             {
+                case AccountType.Standard:
+                    account = new Account(new StandardAccount());
+                    break;
                 case AccountType.Bronze:
                     account = new Account(new BronzeAccount());
                     break;
