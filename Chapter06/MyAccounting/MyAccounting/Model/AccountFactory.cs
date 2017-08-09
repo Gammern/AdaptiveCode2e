@@ -4,32 +4,32 @@ namespace MyAccounting.Model
 {
     public class AccountFactory : IAccountFactory
     {
-        public AccountBase CreateAccount(AccountType type)
+        public Account CreateAccount(AccountType type)
         {
-            AccountBase account = null;
+            Account account = null;
             switch (type)
             {
                 case AccountType.Bronze:
-                    account = new BronzeAccount();
+                    account = new Account(new BronzeAccount());
                     break;
                 case AccountType.Silver:
-                    account = new SilverAccount();
+                    account = new Account(new SilverAccount());
                     break;
                 case AccountType.Gold:
-                    account = new GoldAccount();
+                    account = new Account(new GoldAccount());
                     break;
                 case AccountType.Platinum:
-                    account = new PlatinumAccount();
+                    account = new Account(new PlatinumAccount());
                     break;
             }
             return account;
         }
 
-        public AccountBase CreateAccount(string accountType)
+        public Account CreateAccount(string accountType)
         {
             try
             {
-                return (AccountBase)Activator.CreateInstance(Type.GetType($"MyAccounting.Model.{accountType}Account"));
+                return new Account((IRewardCard)Activator.CreateInstance(Type.GetType($"MyAccounting.Model.{accountType}Account")));
             }
             catch (Exception ex)
             {

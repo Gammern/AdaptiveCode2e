@@ -48,7 +48,7 @@ namespace MyAccounting.Tests
             // Act
             sut.AddTransaction(100m);
 
-            Assert.AreEqual(5, sut.RewardPoints);
+            Assert.AreEqual(5, sut.RewardPoints());
         }
 
         [TestMethod]
@@ -60,7 +60,7 @@ namespace MyAccounting.Tests
             // Act
             sut.AddTransaction(100m);
 
-            Assert.AreEqual(10, sut.RewardPoints);
+            Assert.AreEqual(10, sut.RewardPoints());
         }
 
         [TestMethod]
@@ -72,7 +72,7 @@ namespace MyAccounting.Tests
             // Act
             sut.AddTransaction(100m);
 
-            Assert.AreEqual(20, sut.RewardPoints);
+            Assert.AreEqual(20, sut.RewardPoints());
         }
 
         [TestMethod]
@@ -83,8 +83,8 @@ namespace MyAccounting.Tests
 
             // Act
             sut.AddTransaction(100m);
-
-            Assert.AreEqual(50, sut.RewardPoints);
+            
+            Assert.AreEqual(50, sut.RewardPoints());
         }
 
         [TestMethod]
@@ -97,7 +97,7 @@ namespace MyAccounting.Tests
             sut.AddTransaction(10000m);
             sut.AddTransaction(1000m);
 
-            Assert.AreEqual(5510, sut.RewardPoints);
+            Assert.AreEqual(5510, sut.RewardPoints());
         }
 
         [TestMethod]
@@ -109,7 +109,7 @@ namespace MyAccounting.Tests
             // Act
             sut.AddTransaction(100m);
 
-            Assert.AreEqual(50, sut.RewardPoints);
+            Assert.AreEqual(50, sut.RewardPoints());
         }
 
         [TestMethod]

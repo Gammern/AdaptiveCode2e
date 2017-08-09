@@ -7,60 +7,67 @@ namespace MyAccounting.Model
         Bronze, Silver, Gold, Platinum
     }
 
-    public abstract class AccountBase // "Base" suffix indicate abstract class
+    public class Account
     {
         public decimal Balance { get; private set; }
-        public int RewardPoints { get; private set; }
+
+        private readonly IRewardCard rewardCard;
+
+        public Account(IRewardCard rewardCard)
+        {
+            this.rewardCard = rewardCard;
+        }
 
         public void AddTransaction(decimal amount)
         {
-            RewardPoints += CalculateRewardPoints(amount);
+            rewardCard.CalculateRewardPoints(amount, Balance);
             Balance += amount;
         }
-
-        public abstract int CalculateRewardPoints(decimal amount);
     }
 
-    public class BronzeAccount : AccountBase
+    internal class BronzeAccount : IRewardCard
     {
         private readonly int BronzeTransactionCostPerPoint = 20;
+        public int RewardPoints { get; private set; }
 
-        public override int CalculateRewardPoints(decimal amount)
+        public void CalculateRewardPoints(decimal transactionAmount, decimal accountBalance)
         {
-            return Math.Max((int)decimal.Floor(amount / BronzeTransactionCostPerPoint), 0);
+            RewardPoints += Math.Max((int)decimal.Floor(transactionAmount / BronzeTransactionCostPerPoint), 0);
         }
     }
 
-    public class SilverAccount : AccountBase
+    internal class SilverAccount : IRewardCard
     {
         private readonly int SilverTransactionCostPerPoint = 10;
+        public int RewardPoints { get; private set; }
 
-        public override int CalculateRewardPoints(decimal amount)
+        public void CalculateRewardPoints(decimal transactionAmount, decimal accountBalance)
         {
-            return Math.Max((int)decimal.Floor(amount / SilverTransactionCostPerPoint),0);
+            RewardPoints += Math.Max((int)decimal.Floor(transactionAmount / SilverTransactionCostPerPoint),0);
         }
     }
 
-    public class GoldAccount : AccountBase
+    internal class GoldAccount : IRewardCard
     {
         private readonly int GoldTransactionCostPerPoint = 5;
         private readonly int GoldBalanceCostPerPoint = 2000;
+        public int RewardPoints { get; private set; }
 
-        public override int CalculateRewardPoints(decimal amount)
+        public void CalculateRewardPoints(decimal transactionAmount, decimal accountBalance)
         {
-            return Math.Max((int)decimal.Floor((Balance / GoldBalanceCostPerPoint) + (amount / GoldTransactionCostPerPoint)), 0);
+            RewardPoints += Math.Max((int)decimal.Floor((accountBalance / GoldBalanceCostPerPoint) + (transactionAmount / GoldTransactionCostPerPoint)), 0);
         }
     }
 
-    public class PlatinumAccount : AccountBase
+    internal class PlatinumAccount : IRewardCard
     {
         private readonly int PlatiniumTransactionCostPerPoint = 2;
         private readonly int PlatiniumBalanceCostPerPoint = 1000;
+        public int RewardPoints { get; private set; }
 
-
-        public override int CalculateRewardPoints(decimal amount)
+        public void CalculateRewardPoints(decimal transactionAmount, decimal accountBalance)
         {
-            return Math.Max((int)decimal.Floor((Balance / PlatiniumBalanceCostPerPoint) + (amount / PlatiniumTransactionCostPerPoint)), 0);
+            RewardPoints += Math.Max((int)decimal.Floor((accountBalance / PlatiniumBalanceCostPerPoint) + (transactionAmount / PlatiniumTransactionCostPerPoint)), 0);
         }
     }
 }
