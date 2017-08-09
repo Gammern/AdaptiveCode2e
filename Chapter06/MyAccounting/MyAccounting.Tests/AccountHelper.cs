@@ -6,7 +6,7 @@ namespace MyAccounting.Tests
 {
     internal static class AccountHelper
     {
-        internal static object GetPrivateInstanceField(Type type, object instance, string fieldName)
+        private static object GetPrivateInstanceField(Type type, object instance, string fieldName)
         {
             BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.NonPublic;
             FieldInfo field = type.GetField(fieldName, bindFlags);
