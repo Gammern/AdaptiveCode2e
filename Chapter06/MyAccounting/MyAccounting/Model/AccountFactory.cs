@@ -4,10 +4,10 @@ namespace MyAccounting.Model
 {
     public class AccountFactory : IAccountFactory
     {
-        public Account CreateAccount(AccountType type)
+        public Account CreateAccount(AccountType accountType)
         {
             Account account = null;
-            switch (type)
+            switch (accountType)
             {
                 case AccountType.Standard:
                     account = new Account(new StandardRewardCard());
@@ -28,15 +28,15 @@ namespace MyAccounting.Model
             return account;
         }
 
-        public Account CreateAccount(string accountType)
+        public Account CreateAccount(string accountTypeName)
         {
             try
             {
-                return new Account((IRewardCard)Activator.CreateInstance(Type.GetType($"MyAccounting.Model.{accountType}RewardCard")));
+                return new Account((IRewardCard)Activator.CreateInstance(Type.GetType($"MyAccounting.Model.{accountTypeName}RewardCard")));
             }
             catch (Exception ex)
             {
-                throw new ModelException($"{accountType} is not valid name for an account type", ex);
+                throw new ModelException($"{accountTypeName} is not valid name for an account type", ex);
             }
         }
     }

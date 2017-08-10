@@ -30,7 +30,7 @@ namespace MyAccounting.Tests
         public void AccountTransaction100ShouldIncreaseBalance()
         {
             // Arrange 
-            var sut = AccountFactory.CreateAccount(AccountType.Silver);
+            var sut = AccountFactory.CreateAccount("Silver");
 
             // Act
             sut.AddTransaction(100m);
@@ -65,7 +65,6 @@ namespace MyAccounting.Tests
             // Assert
             Assert.AreEqual(100m, sut.Balance);
         }
-
 
         [TestMethod]
         public void BronzeAccountTransactionShouldGenerateRewardPoints()
