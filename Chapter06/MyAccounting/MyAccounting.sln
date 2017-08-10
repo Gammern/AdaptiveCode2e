@@ -8,9 +8,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2C0F764B-4DEE-4771-95A2-02E1E924A629}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAccounting.Tests", "MyAccounting.Tests\MyAccounting.Tests.csproj", "{8701BBE0-AA6C-46AE-A9E9-522C8C10A1CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAccounting.Tests", "MyAccounting.Tests\MyAccounting.Tests.csproj", "{8701BBE0-AA6C-46AE-A9E9-522C8C10A1CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
