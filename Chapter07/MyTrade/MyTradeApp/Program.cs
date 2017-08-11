@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyTradeApp.AdoNet;
+using System;
 using System.IO;
 
 namespace MyTradeApp
@@ -7,11 +8,20 @@ namespace MyTradeApp
     {
         static void Main(string[] args)
         {
+
             using (var tradeStream = File.OpenRead("trades.txt"))
             {
-                var tradeProcessor = new TradeProcessor();
-                tradeProcessor.ProcessTrades(tradeStream);
+                var logger = new ConsoleLogger();
+                var tradeValidator = new SimpleTradeValidator(logger);
+                var tradeDataProvider = new StreamTradeDataProvider(tradeStream);
+                var tradeMapper = new SimpleTradeMapper();
+                var tradeParser = new SimpleTradeParser(tradeValidator, tradeMapper);
+                var tradeStorage = new AdoNetTradeStorage(logger);
+
+                var tradeProcessor = new TradeProcessor(tradeDataProvider, tradeParser, tradeStorage);
+                tradeProcessor.ProcessTrades();
             }
+
             Console.ReadKey();
         }
     }

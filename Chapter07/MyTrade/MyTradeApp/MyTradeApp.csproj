@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.3.1" />
+    <ProjectReference Include="..\MyTradeApp.AdoNet\MyTradeApp.AdoNet.csproj" />
+    <ProjectReference Include="..\MyTradeApp.Contracts\MyTradeApp.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
