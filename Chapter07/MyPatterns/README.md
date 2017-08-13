@@ -7,3 +7,5 @@ In my sample, I add behaviour/flavour to coffee. I do it run-time using interfac
 ![Decorator Pattern](DecoratorPattern/DecoratorPattern.png)
 
 ### Composite pattern
+
+Have to do another F###ING Windows Credential Check
