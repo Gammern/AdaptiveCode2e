@@ -2,19 +2,19 @@
 
 namespace DecoratorPattern
 {
-    internal class DecoratorComponent : IComponent
+    internal class MilkDecoratorComponent : IComponent
     {
         private readonly IComponent decoratedComponent;
 
-        public DecoratorComponent(IComponent decoratedComponent)
+        public MilkDecoratorComponent(IComponent decoratedComponent)
         {
             this.decoratedComponent = decoratedComponent;
         }
 
         public void DoSomething()
         {
-            Console.WriteLine("Check bog roll availability");
             decoratedComponent.DoSomething();
+            Console.Write(", milk");
         }
     }
 }

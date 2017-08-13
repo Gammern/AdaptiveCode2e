@@ -2,11 +2,11 @@
 
 namespace DecoratorPattern
 {
-    internal class ConcreteComponent : IComponent
+    internal class CoffeeConcreteComponent : IComponent
     {
         public void DoSomething()
         {
-            Console.WriteLine("Having a dump");
+            Console.Write("Coffee");
         }
     }
 }

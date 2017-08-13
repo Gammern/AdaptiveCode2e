@@ -2,19 +2,19 @@
 
 namespace DecoratorPattern
 {
-    internal class AfterDecoratorComponent : IComponent
+    internal class SugarDecoratorComponent : IComponent
     {
         private IComponent decoratedComponent;
 
-        public AfterDecoratorComponent(IComponent comp)
+        public SugarDecoratorComponent(IComponent decoratedComponent)
         {
-            this.decoratedComponent = comp;
+            this.decoratedComponent = decoratedComponent;
         }
 
         public void DoSomething()
         {
             decoratedComponent.DoSomething();
-            Console.WriteLine("Flush and let the lid down");
+            Console.Write(", sugar");
         }
     }
 }
