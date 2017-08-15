@@ -4,9 +4,9 @@ namespace CompositePattern
 {
     class AThirdTypeOfLeaf : IComponent
     {
-        public void Something()
+        public void Something(string indent)
         {
-            Console.WriteLine($"AThirdTypeOfLeaf 0x{GetHashCode():X}");
+            Console.WriteLine($"{indent}{GetType().Name} 0x{GetHashCode():X}");
         }
     }
 }

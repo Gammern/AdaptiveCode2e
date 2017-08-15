@@ -4,19 +4,20 @@
     {
         static void Main(string[] args)
         {
-            var composite = new CompositeComponent("FirstCC");
+            var composite = new CompositeComponent("First Composite Component");
             composite.AddComponent(new Leaf());
-            composite.AddComponent(new SecondTypeOfLeaf());
-            composite.AddComponent(new AThirdTypeOfLeaf());
+            composite.AddComponent(new Leaf());
+            composite.AddComponent(new Leaf());
 
-            composite = new CompositeComponent("SecondCC")
+            // Fluent version since AddComponent return "this"
+            composite = new CompositeComponent("Second Composite Component")
                 .AddComponent(new Leaf())
                 .AddComponent(new SecondTypeOfLeaf())
                 .AddComponent(new AThirdTypeOfLeaf())
-                .AddComponent(composite);
+                .AddComponent(composite); // First will now become child of Second
 
             IComponent component = composite;
-            component.Something();
+            component.Something(); // Will call Something() for all objects in the tree
         }
     }
 }

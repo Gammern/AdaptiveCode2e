@@ -14,12 +14,12 @@ namespace CompositePattern
             this.children = new List<IComponent>();
         }
 
-        public void Something()
+        public void Something(string indent)
         {
-            Console.WriteLine($"CompositeComponent {Name} 0x{GetHashCode():X}");
+            Console.WriteLine($"{indent}{GetType().Name} 0x{GetHashCode():X}");
             foreach (var child in children)
             {
-                child.Something();
+                child.Something(indent + "    ");
             }
         }
 

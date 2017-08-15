@@ -2,6 +2,6 @@
 {
     public interface IComponent
     {
-        void Something();
+        void Something(string indent = "");
     }
 }
