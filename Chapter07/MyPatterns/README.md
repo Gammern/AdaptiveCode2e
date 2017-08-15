@@ -7,3 +7,5 @@ In my sample, I add behaviour/flavour to coffee. I do it run-time using interfac
 ![Decorator Pattern](DecoratorPattern/DecoratorPattern.png)
 
 ### Composite pattern
+The [composite pattern](https://en.wikipedia.org/wiki/Composite_pattern) describe group 
+of object treated the same way as a single instance. Can compose tree like structures.
