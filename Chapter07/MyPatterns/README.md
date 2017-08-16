@@ -11,3 +11,9 @@ In my sample, I add behaviour/flavour to coffee. I do it run-time using interfac
 The [composite pattern](https://en.wikipedia.org/wiki/Composite_pattern) describe a group 
 of object treated the same way as a single instance. Decorator wrap one object, wheras 
 composite wrap a list of objects.
+
+### Predicate Decorator pattern
+Hide conditional execution from client.
+
+### Branching decorator pattern
+Two execution paths, one for true, another for false. Depend on the supplied predicate test.
