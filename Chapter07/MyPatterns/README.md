@@ -17,3 +17,6 @@ Hide conditional execution from client.
 
 ### Branching decorator pattern
 Two execution paths, one for true, another for false. Depend on the supplied predicate test.
+
+### Logging Decorator
+Sample of decorating a simple one operation calculator instance with logging.
