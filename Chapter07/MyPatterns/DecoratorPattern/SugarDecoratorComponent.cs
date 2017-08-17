@@ -4,7 +4,7 @@ namespace DecoratorPattern
 {
     internal class SugarDecoratorComponent : IComponent
     {
-        private IComponent decoratedComponent;
+        private readonly IComponent decoratedComponent;
 
         public SugarDecoratorComponent(IComponent decoratedComponent)
         {

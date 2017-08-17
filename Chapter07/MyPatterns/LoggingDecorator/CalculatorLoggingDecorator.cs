@@ -4,8 +4,8 @@ namespace LoggingDecorator
 {
     internal class CalculatorLoggingDecorator : ICalculator
     {
-        private ICalculator calculator;
-        private Action<string> Log;
+        private readonly ICalculator calculator;
+        private readonly Action<string> Log;
 
         public CalculatorLoggingDecorator(ICalculator calculator, Action<string> logAction)
         {

@@ -19,4 +19,8 @@ Hide conditional execution from client.
 Two execution paths, one for true, another for false. Depend on the supplied predicate test.
 
 ### Logging Decorator
-Sample of decorating a simple one operation calculator instance with logging.
+Sample of decorating a simple one-operation-calculator instance with logging.
+
+### Profiling decorator
+This is just another variant of the logging decorator. 
+Couldn't be bothered to wrap Stopwatch in my sample.
