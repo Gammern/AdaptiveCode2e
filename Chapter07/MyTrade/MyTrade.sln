@@ -1,15 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTradeApp", "MyTradeApp\MyTradeApp.csproj", "{C36385D4-77FD-4C7C-8606-1A9C97D04472}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{240CD2A1-6984-4BFC-979F-5F6B0B108798}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTradeApp.Contracts", "MyTradeApp.Contracts\MyTradeApp.Contracts.csproj", "{097ADCA5-F798-497A-B7E1-85426790CB5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTradeApp.Contracts", "MyTradeApp.Contracts\MyTradeApp.Contracts.csproj", "{097ADCA5-F798-497A-B7E1-85426790CB5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTradeApp.AdoNet", "MyTradeApp.AdoNet\MyTradeApp.AdoNet.csproj", "{65AE2DF1-BC8E-49F3-BD36-A77D29D4DEE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTradeApp.AdoNet", "MyTradeApp.AdoNet\MyTradeApp.AdoNet.csproj", "{65AE2DF1-BC8E-49F3-BD36-A77D29D4DEE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{568F5E21-B68D-4361-A530-33D285E0DB39}"
+	ProjectSection(SolutionItems) = preProject
+		MyTradeApp.png = MyTradeApp.png
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,5 +44,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C687CD18-6A87-46EA-A7CE-FF8D3C3DD726}
 	EndGlobalSection
 EndGlobal

@@ -10,3 +10,4 @@ reading, processing and storing.
 This is a massive undertaking. Going from one unmaintainable file to 6 new interfaces, 
 6 new classes and two new projects. (Should have been split to several smaller steps)
 
+![Refactored Solution](Documents\MyTradeApp.png)
