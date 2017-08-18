@@ -6,7 +6,7 @@ namespace TradeProcessorClient
     {
         static void Main(string[] args)
         {
-            var tradeProcessor = TradeProcessor.Create();
+            var tradeProcessor = TradeProcessorBase.Create(2);
             tradeProcessor.ProcessTrades();
         }
     }
