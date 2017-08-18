@@ -4,6 +4,11 @@ namespace TradeProcessorLib
 {
     public class TradeProcessor
     {
+        public static TradeProcessor Create()
+        {
+            return new TradeProcessor();
+        }
+
         public void ProcessTrades()
         {
             var lines = ReadTradeData();
