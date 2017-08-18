@@ -6,10 +6,10 @@ namespace TradeProcessorLib
     {
         public static TradeProcessor Create()
         {
-            return new TradeProcessor();
+            return new TradeProcessorVersion2();
         }
 
-        public void ProcessTrades()
+        public virtual void ProcessTrades()
         {
             var lines = ReadTradeData();
             var trades = ParseTrades(lines);
