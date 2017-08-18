@@ -1,6 +1,6 @@
 ﻿namespace TradeProcessorLib
 {
-    internal class TradeRecord
+    public class TradeRecord
     {
     }
 }
