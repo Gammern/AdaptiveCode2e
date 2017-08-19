@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeProcessorClient", "TradeProcessorClient\TradeProcessorClient.csproj", "{B743C226-EA19-4868-8742-CBEA7AABFD9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeProcessorClient", "TradeProcessorClient\TradeProcessorClient.csproj", "{B743C226-EA19-4868-8742-CBEA7AABFD9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeProcessorLib", "TradeProcessor\TradeProcessorLib.csproj", "{637A7C4B-20D5-45DF-9501-9779CA40AF47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeProcessorLib", "TradeProcessor\TradeProcessorLib.csproj", "{637A7C4B-20D5-45DF-9501-9779CA40AF47}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{41BDF13E-F99D-4B5D-B4B6-0A6EE250AE9E}"
 	ProjectSection(SolutionItems) = preProject
+		InterfaceInheritance.dgml = InterfaceInheritance.dgml
+		InterfaceInheritance.png = InterfaceInheritance.png
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
