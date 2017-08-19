@@ -4,11 +4,6 @@ namespace TradeProcessorLib
 {
     public abstract class TradeProcessorBase : ITradeProcessor
     {
-        public static TradeProcessorBase Create(int version = 1)
-        {
-            return version == 2 ? (TradeProcessorBase)new TradeProcessorVersion2() : new TradeProcessor();
-        }
-
         public virtual void ProcessTrades()
         {
             var lines = ReadTradeData();
