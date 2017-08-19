@@ -2,7 +2,7 @@
 
 namespace TradeProcessorLib
 {
-    public abstract class TradeProcessorBase
+    public abstract class TradeProcessorBase : ITradeProcessor
     {
         public static TradeProcessorBase Create(int version = 1)
         {

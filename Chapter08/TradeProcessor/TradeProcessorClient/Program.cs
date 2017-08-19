@@ -6,8 +6,19 @@ namespace TradeProcessorClient
     {
         static void Main(string[] args)
         {
-            var tradeProcessor = TradeProcessorBase.Create(2);
+            var tradeProcessorFactory = new TradeProcessorFactory();
+
+            var tradeProcessor = tradeProcessorFactory.Create("TradeProcessorVersion2");
             tradeProcessor.ProcessTrades();
+            System.Console.WriteLine();
+
+            tradeProcessor = tradeProcessorFactory.Create("TradeProcessor");
+            tradeProcessor.ProcessTrades();
+            System.Console.WriteLine();
+
+            tradeProcessor = tradeProcessorFactory.Create("TradeProcessorAudit");
+            tradeProcessor.ProcessTrades();
+            System.Console.WriteLine();
         }
     }
 }
