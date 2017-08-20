@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 @2 Type=TradeProcessorAudit)" Category="CodeSchema_Class" Bounds="-9323,-9693,149.57,26" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" CommonLabel="TradeProcessorAudit" Icon="Microsoft.VisualStudio.Class.Public" Label="TradeProcessorAudit" SourceLocation="(Assembly=file:///C:/Users/johan/Source/Github/Systemutvikler/AdaptiveCode2e/Chapter08/TradeProcessor/TradeProcessor/TradeProcessorAudit.cs StartLineNumber=4 StartCharacterOffset=24 EndLineNumber=4 EndCharacterOffset=43)" UseManualLocation="True" />
+    <Node Id="(@1 @2 Type=TradeProcessorFactory)" Category="CodeSchema_Class" Bounds="-9668,-9805,159.176666666666,26" CodeSchemaProperty_IsPublic="True" CommonLabel="TradeProcessorFactory" Icon="Microsoft.VisualStudio.Class.Public" Label="TradeProcessorFactory" SourceLocation="(Assembly=file:///C:/Users/johan/Source/Github/Systemutvikler/AdaptiveCode2e/Chapter08/TradeProcessor/TradeProcessor/TradeProcessorFactory.cs StartLineNumber=4 StartCharacterOffset=17 EndLineNumber=4 EndCharacterOffset=38)" UseManualLocation="True" />
+    <Node Id="(@1 @2 Type=TradeProcessorVersion2)" Category="CodeSchema_Class" Bounds="-9548,-9588,166.43,26" CodeSchemaProperty_IsPublic="True" CommonLabel="TradeProcessorVersion2" Icon="Microsoft.VisualStudio.Class.Public" Label="TradeProcessorVersion2" SourceLocation="(Assembly=file:///C:/Users/johan/Source/Github/Systemutvikler/AdaptiveCode2e/Chapter08/TradeProcessor/TradeProcessor/TradeProcessorVersion2.cs StartLineNumber=4 StartCharacterOffset=17 EndLineNumber=4 EndCharacterOffset=39)" UseManualLocation="True" />
+    <Node Id="@3" Category="CodeSchema_Interface" Bounds="-9446.99998697917,-9808.0001,124.193333333333,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="ITradeProcessor" Icon="Microsoft.VisualStudio.Interface.Public" Label="ITradeProcessor" SourceLocation="(Assembly=file:///C:/Users/johan/Source/Github/Systemutvikler/AdaptiveCode2e/Chapter08/TradeProcessor/TradeProcessor/ITradeProcessor.cs StartLineNumber=2 StartCharacterOffset=21 EndLineNumber=2 EndCharacterOffset=36)" UseManualLocation="True" />
+    <Node Id="@5" Category="CodeSchema_Class" Bounds="-9533.715,-9931.00005,86.6066666666666,26" CodeSchemaProperty_IsInternal="True" CommonLabel="Program" Icon="Microsoft.VisualStudio.Class.Internal" Label="Program" SourceLocation="(Assembly=file:///C:/Users/johan/Source/Github/Systemutvikler/AdaptiveCode2e/Chapter08/TradeProcessor/TradeProcessorClient/Program.cs StartLineNumber=4 StartCharacterOffset=10 EndLineNumber=4 EndCharacterOffset=17)" UseManualLocation="True" />
+    <Node Id="@6" Category="CodeSchema_Class" Bounds="-9537.00011067708,-9690.9999,145.356666666667,26" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" CommonLabel="TradeProcessorBase" Icon="Microsoft.VisualStudio.Class.Public" Label="TradeProcessorBase" SourceLocation="(Assembly=file:///C:/Users/johan/Source/Github/Systemutvikler/AdaptiveCode2e/Chapter08/TradeProcessor/TradeProcessor/TradeProcessorBase.cs StartLineNumber=4 StartCharacterOffset=26 EndLineNumber=4 EndCharacterOffset=44)" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="(@1 @2 Type=TradeProcessorAudit)" Target="@3" Bounds="-9362.5647827617,-9776.20599933125,98.898073032211,83.2059993312469" />
+    <Link Source="(@1 @2 Type=TradeProcessorVersion2)" Target="@6" Bounds="-9464.72653494779,-9655.99999101478,0.305817155773184,67.9999910147762" />
+    <Link Source="@5" Target="(@1 @2 Type=TradeProcessorFactory)" Bounds="-9572.77508373095,-9905,72.2523468241234,92.8958312888353" />
+    <Link Source="@5" Target="@3" Bounds="-9479.26032820525,-9905,77.3460377102474,90.1687813500175" />
+    <Link Source="@6" Target="@3" Bounds="-9455.49751942448,-9774.55357112709,56.7153187790191,83.5536711270852" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_Interface" Label="Interface" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Interface" NavigationActionLabel="Interfaces" />
+    <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsAbstract" Label="Is Abstract" Description="Flag to indicate member is 'Abstract' does not provide a full implementation" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsFinal" Label="Is Final" Description="Flag to indicate the member is 'Final' and cannot be derived from" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsInternal" Label="Is Internal" Description="Flag to indicate the method is 'Internal'" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Start Line Number" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(637a7c4b-20d5-45df-9501-9779ca40af47.OutputPathUri)" />
+    <Alias n="2" Id="Namespace=TradeProcessorLib" />
+    <Alias n="3" Id="(@1 @2 Type=ITradeProcessor)" />
+    <Alias n="4" Uri="Assembly=$(b743c226-ea19-4868-8742-cbea7aabfd9d.OutputPathUri)" />
+    <Alias n="5" Id="(@4 Namespace=TradeProcessorClient Type=Program)" />
+    <Alias n="6" Id="(@1 @2 Type=TradeProcessorBase)" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="637a7c4b-20d5-45df-9501-9779ca40af47.OutputPath" Value="C:\Users\johan\Source\Github\Systemutvikler\AdaptiveCode2e\Chapter08\TradeProcessor\TradeProcessor\bin\Debug\netstandard1.4\TradeProcessorLib.dll" />
+    <Path Id="637a7c4b-20d5-45df-9501-9779ca40af47.OutputPathUri" Value="file:///C:/Users/johan/Source/Github/Systemutvikler/AdaptiveCode2e/Chapter08/TradeProcessor/TradeProcessor/bin/Debug/netstandard1.4/TradeProcessorLib.dll" />
+    <Path Id="b743c226-ea19-4868-8742-cbea7aabfd9d.OutputPathUri" Value="file:///C:/Users/johan/Source/Github/Systemutvikler/AdaptiveCode2e/Chapter08/TradeProcessor/TradeProcessorClient/bin/Debug/netcoreapp1.1/TradeProcessorClient.dll" />
+  </Paths>
+</DirectedGraph>
