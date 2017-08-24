@@ -5,6 +5,27 @@ namespace Shipping
 {
     public class ShippingStrategy
     {
+        protected decimal flatRate;
+                
+        public ShippingStrategy(decimal flatRate)
+        {
+            FlatRate = flatRate;
+        }
+
+        public decimal FlatRate
+        {
+            get { return flatRate; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(FlatRate), "Flat rate must be positive and non-zero");
+                }
+
+                this.flatRate = value;
+            }
+        }
+
         public decimal CalculateShippingCost(float packageWeightInKilograms, Size<float> packageDimensionsInCentimetres, RegionInfo destination)
         {
             #region Preconditions

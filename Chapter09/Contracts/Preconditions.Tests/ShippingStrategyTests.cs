@@ -11,7 +11,7 @@ namespace Shipping.Tests
 
         public ShippingStrategyTests()
         {
-            sut = new ShippingStrategy();
+            sut = new ShippingStrategy(decimal.One);
         }
 
         [Fact]
@@ -31,6 +31,25 @@ namespace Shipping.Tests
         {
             Assert.Throws<ArgumentOutOfRangeException>("packageDimensionsInCentimetres", () => sut.CalculateShippingCost(1, invalidDimensions , null));
         }
+
+        [Fact]
+        public void FlatRatePropertySetMustBePositive()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => sut.FlatRate = decimal.MinusOne);
+        }
+
+        [Fact]
+        public void CtorFlatRateMustBePositive()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => new ShippingStrategy(decimal.MinusOne));
+        }
+
+        [Fact]
+        public void CalculateShippingCostResultMustBePositive()
+        {
+            Assert.True(sut.CalculateShippingCost(1, validDimensions, null) > 0);
+        }
+
     }
 
 }
