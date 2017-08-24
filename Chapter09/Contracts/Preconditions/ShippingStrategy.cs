@@ -24,7 +24,16 @@ namespace Shipping
             }
             #endregion
 
-            return decimal.MinusOne;
+            var shippingCost = decimal.One;
+
+            #region Postconditions
+            if (shippingCost <= decimal.Zero)
+            {
+                throw new ArgumentOutOfRangeException("return", "Shipping cost can't be negative");
+            }
+            #endregion
+
+            return shippingCost;
         }
     }
 }
