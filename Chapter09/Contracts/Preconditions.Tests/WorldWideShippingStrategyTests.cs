@@ -11,8 +11,6 @@ namespace Shipping.Tests
     /// </summary>
     public class WorldWideShippingStrategyTests : ShippingStrategyTests
     {
-        protected new WorldWideShippingStrategy sut;
-
         public WorldWideShippingStrategyTests()
         {
             sut = new WorldWideShippingStrategy();
@@ -52,13 +50,13 @@ namespace Shipping.Tests
         [Fact]
         public void ShippingFlatRateCannotBeSetToANegativeNumber()
         {
-            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => sut.FlatRate = decimal.MinusOne);
+            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => (sut as WorldWideShippingStrategy).FlatRate = decimal.MinusOne);
         }
 
         [Fact]
         public void FlatRatePropertySetCantBeZero()
         {
-            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => sut.FlatRate = decimal.Zero);
+            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => (sut as WorldWideShippingStrategy).FlatRate = decimal.Zero);
         }
 
     }
