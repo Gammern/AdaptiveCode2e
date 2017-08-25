@@ -5,7 +5,7 @@ namespace Shipping
 {
     public class ShippingStrategy
     {
-        protected decimal flatRate;
+        private decimal flatRate;
                 
         public ShippingStrategy(decimal flatRate)
         {
@@ -26,7 +26,7 @@ namespace Shipping
             }
         }
 
-        public decimal CalculateShippingCost(float packageWeightInKilograms, Size<float> packageDimensionsInCentimetres, RegionInfo destination)
+        public virtual decimal CalculateShippingCost(float packageWeightInKilograms, Size<float> packageDimensionsInCentimetres, RegionInfo destination)
         {
             #region Preconditions
             if (packageWeightInKilograms <= 0)

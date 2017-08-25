@@ -5,9 +5,9 @@ namespace Shipping.Tests
 {
     public class ShippingStrategyTests
     {
-        private readonly ShippingStrategy sut;
-        private readonly Size<float> validDimensions = new Size<float>() { Depth = 1, Height = 1, Width = 1 };
-        private readonly Size<float> invalidDimensions = new Size<float>() { Depth = 0, Height = -1, Width = 0 };
+        protected ShippingStrategy sut;
+        protected readonly Size<float> validDimensions = new Size<float>() { Depth = 1, Height = 1, Width = 1 };
+        protected readonly Size<float> invalidDimensions = new Size<float>() { Depth = 0, Height = -1, Width = 0 };
 
         public ShippingStrategyTests()
         {
@@ -39,6 +39,12 @@ namespace Shipping.Tests
         }
 
         [Fact]
+        public void FlatRatePropertySetCantBeZero()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => sut.FlatRate = decimal.Zero);
+        }
+
+        [Fact]
         public void CtorFlatRateMustBePositive()
         {
             Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => new ShippingStrategy(decimal.MinusOne));
@@ -49,7 +55,5 @@ namespace Shipping.Tests
         {
             Assert.True(sut.CalculateShippingCost(1, validDimensions, null) > 0);
         }
-
     }
-
 }
