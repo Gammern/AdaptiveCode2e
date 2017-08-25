@@ -9,16 +9,22 @@ namespace Shipping
                 
         public ShippingStrategy(decimal flatRate)
         {
-            FlatRate = flatRate;
+            if (flatRate <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(flatRate), "Flat rate must be positive and non-zero");
+            }
+
+            this.flatRate = flatRate;
         }
 
-        public decimal FlatRate
+        protected decimal FlatRate
         {
             get { return flatRate; }
             set
             {
                 if (value <= 0)
                 {
+                    // Dont set paramName to "value". You will be testing internal implementation if you do.
                     throw new ArgumentOutOfRangeException(nameof(FlatRate), "Flat rate must be positive and non-zero");
                 }
 

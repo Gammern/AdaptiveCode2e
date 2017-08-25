@@ -12,6 +12,12 @@ namespace Shipping
         {
         }
 
+        public new decimal FlatRate
+        {
+            get { return base.FlatRate; }
+            set { base.FlatRate = value; }
+        }
+
         public override decimal CalculateShippingCost(float packageWeightInKilograms, Size<float> packageDimensionsInCentimetres, RegionInfo destination)
         {
             #region Preconditions

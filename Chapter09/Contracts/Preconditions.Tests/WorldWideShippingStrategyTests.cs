@@ -11,6 +11,8 @@ namespace Shipping.Tests
     /// </summary>
     public class WorldWideShippingStrategyTests : ShippingStrategyTests
     {
+        protected new WorldWideShippingStrategy sut;
+
         public WorldWideShippingStrategyTests()
         {
             sut = new WorldWideShippingStrategy();
@@ -26,7 +28,7 @@ namespace Shipping.Tests
         public void ShippingRegionMustBeProvidedForSuperType()
         {
             var target = new ShippingStrategy(decimal.One);
-            // Will fail, supertype do not check destination
+            // Will fail, basetype do not check destination
             Assert.Throws<ArgumentNullException>("destination", () => target.CalculateShippingCost(1, validDimensions, null));
         }
 
@@ -36,6 +38,7 @@ namespace Shipping.Tests
         [Fact]
         public void CalculateShippingCostResultMustBePositive2()
         {
+            // Will fail. Base and sub class do not agree
             Assert.True(sut.CalculateShippingCost(1, validDimensions, RegionInfo.CurrentRegion) > 0);
         }
 
@@ -45,5 +48,18 @@ namespace Shipping.Tests
             var actual = sut.CalculateShippingCost(1, validDimensions, RegionInfo.CurrentRegion);
             Assert.Equal(0, actual);
         }
+
+        [Fact]
+        public void ShippingFlatRateCannotBeSetToANegativeNumber()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => sut.FlatRate = decimal.MinusOne);
+        }
+
+        [Fact]
+        public void FlatRatePropertySetCantBeZero()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => sut.FlatRate = decimal.Zero);
+        }
+
     }
 }

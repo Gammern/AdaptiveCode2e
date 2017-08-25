@@ -33,21 +33,9 @@ namespace Shipping.Tests
         }
 
         [Fact]
-        public void FlatRatePropertySetMustBePositive()
-        {
-            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => sut.FlatRate = decimal.MinusOne);
-        }
-
-        [Fact]
-        public void FlatRatePropertySetCantBeZero()
-        {
-            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => sut.FlatRate = decimal.Zero);
-        }
-
-        [Fact]
         public void CtorFlatRateMustBePositive()
         {
-            Assert.Throws<ArgumentOutOfRangeException>("FlatRate", () => new ShippingStrategy(decimal.MinusOne));
+            Assert.Throws<ArgumentOutOfRangeException>("flatRate", () => new ShippingStrategy(decimal.MinusOne));
         }
 
         [Fact]
