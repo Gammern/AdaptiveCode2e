@@ -39,5 +39,11 @@ namespace Shipping.Tests
             Assert.True(sut.CalculateShippingCost(1, validDimensions, RegionInfo.CurrentRegion) > 0);
         }
 
+        [Fact]
+        public void ShippingDomesticallyIsFree()
+        {
+            var actual = sut.CalculateShippingCost(1, validDimensions, RegionInfo.CurrentRegion);
+            Assert.Equal(0, actual);
+        }
     }
 }

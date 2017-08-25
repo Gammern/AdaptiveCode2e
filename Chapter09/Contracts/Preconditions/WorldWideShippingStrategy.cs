@@ -37,6 +37,12 @@ namespace Shipping
             #endregion
 
             var shippingCost = decimal.One;
+
+            if (destination == RegionInfo.CurrentRegion)
+            {
+                shippingCost = 0;
+            }
+
             return shippingCost;
         }
     }
