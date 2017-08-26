@@ -4,8 +4,8 @@ namespace SubtypeCovariance.Persitence
 {
     using Model;
 
-    public class UserRepository : EntityRepository
+    public class UserRepository : IEntityRepository<User>
     {
-        public override User GetByID(Guid id) => new User(); // Error. C# inheritance is not covariant
+        public User GetByID(Guid id) => new User(); 
     }
 }
