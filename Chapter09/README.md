@@ -24,3 +24,4 @@ Relates to generics/delegate subtypes
 * Covariance for return types
 * No new exception types thrown
 
+Co=with, contra=against. Subtypes go with or against each other.
