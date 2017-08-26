@@ -24,6 +24,8 @@ namespace Shipping
 
         public virtual decimal CalculateShippingCost(float packageWeightInKilograms, Size<float> packageDimensionsInCentimetres, RegionInfo destination)
         {
+            Contract.Ensures(Contract.Result<decimal>() > 0);
+
             #region Preconditions
             Contract.Requires<ArgumentOutOfRangeException>(packageWeightInKilograms < 0f);
             if (packageWeightInKilograms < 0f) throw new Exception("Code Contracts Broken");
@@ -34,10 +36,7 @@ namespace Shipping
                 packageDimensionsInCentimetres.Width > 0f);
             #endregion
 
-            var shippingCost = decimal.One;
-
-            #region Postconditions
-            #endregion
+            var shippingCost = decimal.MinusOne;
 
             return shippingCost;
         }
