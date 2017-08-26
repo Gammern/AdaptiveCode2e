@@ -4,7 +4,7 @@ namespace SubtypeCovariance.Persitence
 {
     using Model;
 
-    public interface IEntityRepository<TEntity> where TEntity : Entity
+    public interface IEntityRepository<out TEntity> where TEntity : Entity
     {
         TEntity GetByID(Guid ID);
     }
