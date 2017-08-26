@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipping", "Preconditions\Shipping.csproj", "{A8B3BA80-3B98-431B-B52C-50FB6C67A19A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipping", "Shipping\Shipping.csproj", "{A8B3BA80-3B98-431B-B52C-50FB6C67A19A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipping.Tests", "Preconditions.Tests\Shipping.Tests.csproj", "{E5D606DF-32BD-4867-A912-DA7E24E3CC09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipping.Tests", "Shipping.Tests\Shipping.Tests.csproj", "{E5D606DF-32BD-4867-A912-DA7E24E3CC09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
