@@ -4,11 +4,6 @@ using Xunit;
 
 namespace Shipping.Tests
 {
-    /// <summary>
-    /// Inherit all test from supertype in order to check pre/post conditions for free.
-    /// Inherited CalculateShippingCostResultMustBePositive() will fail because we have
-    /// strengthened preconditions.
-    /// </summary>
     public class WorldWideShippingStrategyTests : ShippingStrategyTests
     {
         public WorldWideShippingStrategyTests()
@@ -26,17 +21,12 @@ namespace Shipping.Tests
         public void ShippingRegionMustBeProvidedForSuperType()
         {
             var target = new ShippingStrategy(decimal.One);
-            // Will fail, basetype do not check destination
             Assert.Throws<ArgumentNullException>("destination", () => target.CalculateShippingCost(1, validDimensions, null));
         }
 
-        /// <summary>
-        /// Same as supercalss except we have to supply a RegionInfo (strengthened precondition)
-        /// </summary>
         [Fact]
         public void CalculateShippingCostResultMustBePositive2()
         {
-            // Will fail. Base and sub class do not agree
             Assert.True(sut.CalculateShippingCost(1, validDimensions, RegionInfo.CurrentRegion) > 0);
         }
 
