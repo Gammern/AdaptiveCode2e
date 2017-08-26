@@ -22,6 +22,12 @@ namespace Shipping
             }
         }
 
+        [ContractInvariantMethod]
+        private void ClassInvariant()
+        {
+            Contract.Invariant(this.flatRate > 0m, "Flat rate must be positive and non-zero");
+        }
+
         public virtual decimal CalculateShippingCost(float packageWeightInKilograms, Size<float> packageDimensionsInCentimetres, RegionInfo destination)
         {
             Contract.Ensures(Contract.Result<decimal>() > 0);

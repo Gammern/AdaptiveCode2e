@@ -17,6 +17,13 @@ namespace Shipping
             set { base.FlatRate = value; }
         }
 
+        [ContractInvariantMethod]
+        private void ClassInvariant()
+        {
+            Contract.Invariant(this.FlatRate >= 0m, "Flat rate must be positive");
+        }
+
+
         public override decimal CalculateShippingCost(float packageWeightInKilograms, Size<float> packageDimensionsInCentimetres, RegionInfo destination)
         {
             Contract.Ensures(Contract.Result<decimal>() >= 0);
