@@ -20,12 +20,12 @@ namespace Shipping
         public override decimal CalculateShippingCost(float packageWeightInKilograms, Size<float> packageDimensionsInCentimetres, RegionInfo destination)
         {
             #region Preconditions
-            Contract.Requires(packageWeightInKilograms < 0f);
+            Contract.Requires<ArgumentOutOfRangeException>(packageWeightInKilograms < 0f);
             if (packageWeightInKilograms < 0f) throw new Exception("Code Contracts Broken");
-            Contract.Requires(packageDimensionsInCentimetres?.Depth > 0f &&
+            Contract.Requires<ArgumentOutOfRangeException>(packageDimensionsInCentimetres?.Depth > 0f &&
                 packageDimensionsInCentimetres?.Height > 0f &&
                 packageDimensionsInCentimetres?.Width > 0f);
-            Contract.Requires(destination != null);
+            Contract.Requires<ArgumentNullException>(destination != null);
             if (destination != null) throw new Exception("Code Contracts Broken");
 
             #endregion
