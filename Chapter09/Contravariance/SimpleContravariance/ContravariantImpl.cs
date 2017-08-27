@@ -2,6 +2,20 @@
 
 namespace SimpleContravariance
 {
+    // Base, parent, super
+    public class SuperContravariant : IContravariant<SuperType>
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter">Accept SuperType and SubType</param>
+        public void MethodWhichAcceptsT(SuperType parameter)
+        {
+            Console.WriteLine($"{this.GetType().Name}.MethodWitchAcceptsT({parameter.GetType().Name}) Method3() might not exist. Should not have knowledge of derived types anyway");
+        }
+    }
+
+    // derived, child
     public class SubContravariant : IContravariant<SubType>
     {
         /// <summary>
@@ -11,18 +25,6 @@ namespace SimpleContravariance
         public void MethodWhichAcceptsT(SubType parameter)
         {
             Console.WriteLine($"{this.GetType().Name}.MethodWitchAcceptsT({parameter.GetType().Name}) Method3() = {parameter.Method3()}");
-        }
-    }
-
-    public class SuperContravariant : IContravariant<SuperType>
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parameter">Accept SuperType and SubType</param>
-        public void MethodWhichAcceptsT(SuperType parameter)
-        {
-            Console.WriteLine($"{this.GetType().Name}.MethodWitchAcceptsT({parameter.GetType().Name}) Method3() don't exist");
         }
     }
 }

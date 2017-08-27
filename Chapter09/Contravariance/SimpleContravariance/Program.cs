@@ -12,16 +12,23 @@ namespace SimpleContravariance
             IContravariant<SuperType> iSuperCopy, iSuper = new SuperContravariant();
             IContravariant<SubType> iSubCopy, iSub = new SubContravariant();
 
-            iSubCopy = iSuper;    // child = base, relationship reversed
             // iSuperCopy = iSub; // base = child 
+            iSubCopy = iSuper;    // child = base, relationship reversed
 
             // iSuper don't rely on SubType.Method3
-            iSuper.MethodWhichAcceptsT(aSubType); 
+            iSuper.MethodWhichAcceptsT(aSubType);
             iSuper.MethodWhichAcceptsT(aSuperType); // 
 
             // iSub rely on SubType.Method3
-            iSub.MethodWhichAcceptsT(aSubType); 
-            // iSub.MethodWhichAcceptsT(aSuperType); // SyperType dont have Method3()
+            iSub.MethodWhichAcceptsT(aSubType);
+            try
+            {
+                iSub.MethodWhichAcceptsT((SubType)aSuperType); // SyperType dont have Method3()
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
