@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleContravariance", "SimpleContravariance\SimpleContravariance.csproj", "{271FB422-5BF4-4858-8AD3-F120E246C51D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{271FB422-5BF4-4858-8AD3-F120E246C51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271FB422-5BF4-4858-8AD3-F120E246C51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271FB422-5BF4-4858-8AD3-F120E246C51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271FB422-5BF4-4858-8AD3-F120E246C51D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80E4085B-D9A7-40C2-B244-36BA7DB94079}
+	EndGlobalSection
+EndGlobal
