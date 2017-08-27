@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SubtypeCovariance.Persitence
+namespace SubtypeCovariance.Persistence
 {
     using Model;
 

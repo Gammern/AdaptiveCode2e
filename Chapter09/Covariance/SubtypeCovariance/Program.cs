@@ -3,7 +3,7 @@
 namespace SubtypeCovariance
 {
     using Model;
-    using Persitence;
+    using Persistence;
 
     class Program
     {
