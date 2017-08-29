@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace AccountLibrary.Domain
+﻿namespace AccountLibrary.Domain
 {
-    public class DomainException: Exception
+    public class DomainException: AccountLibraryException
     {
     }
 }

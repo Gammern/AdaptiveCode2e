@@ -6,9 +6,9 @@ namespace AdapterPattern
 
     class Program
     {
-        public static void Log(object sender, [CallerMemberName]string functionName = "")
+        public static void Log(string senderTypeName, [CallerMemberName]string functionName = "")
         {
-            Console.WriteLine($"{sender.GetType().FullName}: {functionName} called");
+            Console.WriteLine($"{senderTypeName}: {functionName} called");
         }
 
         static void Main(string[] args)
