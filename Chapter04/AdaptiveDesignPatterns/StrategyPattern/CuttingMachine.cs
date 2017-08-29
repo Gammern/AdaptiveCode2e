@@ -9,7 +9,7 @@ namespace StrategyPattern
             Console.WriteLine($"Processing part {partToProcess.Name}");
             foreach (var joiningPart in partToProcess.JoiningParts)
             {
-                var cuttingStrategy = FramePart.SelectCornerCuttingStrategy(partToProcess, joiningPart);
+                var cuttingStrategy = partToProcess.SelectCornerCuttingStrategy(joiningPart);
                 Console.Write($"\tProcessing join with {joiningPart.Name}: ");
                 cuttingStrategy.Execute();
             }

@@ -4,7 +4,7 @@
     {
         public void MethodB()
         {
-            Program.Log(this);
+            Program.Log(nameof(Target));
         }
     }
 
@@ -20,7 +20,7 @@
 
         public void MethodA()
         {
-            Program.Log(this);
+            Program.Log(nameof(TargetAdapter));
             target.MethodB();
         }
     }

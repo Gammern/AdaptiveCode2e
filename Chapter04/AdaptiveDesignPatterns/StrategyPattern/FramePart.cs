@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace StrategyPattern
 {
@@ -12,8 +10,8 @@ namespace StrategyPattern
             part2.JoiningParts.Add(part1);
         }
 
-        public static ICornerCuttingStrategy SelectCornerCuttingStrategy(FramePart part1, FramePart part2) =>
-            part1.CuttingStrategy.Priority > part2.CuttingStrategy.Priority ? part1.CuttingStrategy : part2.CuttingStrategy;
+        public ICornerCuttingStrategy SelectCornerCuttingStrategy(FramePart otherPart) =>
+            this.CuttingStrategy.Priority > otherPart.CuttingStrategy.Priority ? this.CuttingStrategy : otherPart.CuttingStrategy;
 
         public FramePart(string name, ICornerCuttingStrategy cuttingStrategy)
         {
