@@ -1,13 +1,9 @@
-﻿using System;
-
-namespace AccountLibrary.Services
+﻿namespace AccountLibrary.Services
 {
-    using Domain;
-
-    public class ServiceException : Exception
+    public class ServiceException : AccountLibraryException
     {
-        public ServiceException(string message, DomainException domainException) 
-            : base (message, domainException) 
+        public ServiceException(string message, AccountLibraryException accountLibraryException) 
+            : base (message, accountLibraryException) 
         {
         }
     }
