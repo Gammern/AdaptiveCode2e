@@ -5,7 +5,7 @@ namespace RepositoryExceptions.Persistence
     /// <summary>
     /// New exception introduced
     /// </summary>
-    public class UserNotFoundException : Exception
+    public class UserNotFoundException : EntityNotFoundException
     {
         public UserNotFoundException() : base()
         {
