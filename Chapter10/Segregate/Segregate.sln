@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Segregate.Gui", "Segregate.Gui\Segregate.Gui.csproj", "{2C92156B-F899-4D57-9300-50CF3E9E12E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Segregate.Common", "Segregate.Common\Segregate.Common.csproj", "{BBB88D2A-8FA2-4344-BD4E-D5CECC4E6715}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Segregate.Logging", "Segregate.Logging\Segregate.Logging.csproj", "{42200150-28BF-43F3-B24C-68E20EB3E1BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Segregate.Transactional", "Segregate.Transactional\Segregate.Transactional.csproj", "{FF21E3E6-6F95-4BD1-9151-24630727ED90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCuttingConcerns", "CrossCuttingConcerns", "{8588EC25-CB56-4573-8605-8D359E8CF50D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C92156B-F899-4D57-9300-50CF3E9E12E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C92156B-F899-4D57-9300-50CF3E9E12E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C92156B-F899-4D57-9300-50CF3E9E12E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C92156B-F899-4D57-9300-50CF3E9E12E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBB88D2A-8FA2-4344-BD4E-D5CECC4E6715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB88D2A-8FA2-4344-BD4E-D5CECC4E6715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB88D2A-8FA2-4344-BD4E-D5CECC4E6715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB88D2A-8FA2-4344-BD4E-D5CECC4E6715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42200150-28BF-43F3-B24C-68E20EB3E1BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42200150-28BF-43F3-B24C-68E20EB3E1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42200150-28BF-43F3-B24C-68E20EB3E1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42200150-28BF-43F3-B24C-68E20EB3E1BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF21E3E6-6F95-4BD1-9151-24630727ED90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF21E3E6-6F95-4BD1-9151-24630727ED90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF21E3E6-6F95-4BD1-9151-24630727ED90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF21E3E6-6F95-4BD1-9151-24630727ED90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{42200150-28BF-43F3-B24C-68E20EB3E1BC} = {8588EC25-CB56-4573-8605-8D359E8CF50D}
+		{FF21E3E6-6F95-4BD1-9151-24630727ED90} = {8588EC25-CB56-4573-8605-8D359E8CF50D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AB3834F-5AD1-42DD-A0AB-0134455E9ABD}
+	EndGlobalSection
+EndGlobal
