@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Segregate.Caching", "Segreg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segregate.Audit", "Segregate.Audit\Segregate.Audit.csproj", "{122C684D-A82F-4F4F-80C2-70B90610F06B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segregate.Publishing", "Segregate.Publishing\Segregate.Publishing.csproj", "{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{122C684D-A82F-4F4F-80C2-70B90610F06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{122C684D-A82F-4F4F-80C2-70B90610F06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{122C684D-A82F-4F4F-80C2-70B90610F06B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{FF21E3E6-6F95-4BD1-9151-24630727ED90} = {8588EC25-CB56-4573-8605-8D359E8CF50D}
 		{FA8246C9-DD6A-4867-85F1-D85C6B103012} = {8588EC25-CB56-4573-8605-8D359E8CF50D}
 		{122C684D-A82F-4F4F-80C2-70B90610F06B} = {8588EC25-CB56-4573-8605-8D359E8CF50D}
+		{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD} = {8588EC25-CB56-4573-8605-8D359E8CF50D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9AB3834F-5AD1-42DD-A0AB-0134455E9ABD}
