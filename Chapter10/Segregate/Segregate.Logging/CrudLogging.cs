@@ -5,12 +5,12 @@ using System.Collections.Generic;
 namespace Segregate.Logging
 {
 
-    public class CrudLogging<TEnity> : ICreateReadUpdatedelete<TEnity>
+    public class CrudLogging<TEnity> : ICreateReadUpdate<TEnity>
     {
-        private readonly ICreateReadUpdatedelete<TEnity> decoratedCrud;
+        private readonly ICreateReadUpdate<TEnity> decoratedCrud;
         private readonly ILog log;
 
-        public CrudLogging(ICreateReadUpdatedelete<TEnity> decoratedCrud, ILog log)
+        public CrudLogging(ICreateReadUpdate<TEnity> decoratedCrud, ILog log)
         {
             this.decoratedCrud = decoratedCrud;
             this.log = log;
@@ -20,12 +20,6 @@ namespace Segregate.Logging
         {
             log.Info($"Creating entity of type {typeof(TEnity).Name}");
             decoratedCrud.Create(entity);
-        }
-
-        public void Delete(TEnity entity)
-        {
-            log.Info($"Deleting entity of type {typeof(TEnity).Name}");
-            decoratedCrud.Delete(entity);
         }
 
         public IEnumerable<TEnity> ReadAll()

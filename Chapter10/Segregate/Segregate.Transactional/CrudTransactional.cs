@@ -5,11 +5,11 @@ using System.Transactions;
 
 namespace Segregate.Transactional
 {
-    public class CrudTransactional<TEntity> : ICreateReadUpdatedelete<TEntity>
+    public class CrudTransactional<TEntity> : ICreateReadUpdate<TEntity>
     {
-        private readonly ICreateReadUpdatedelete<TEntity> decoratedCrud;
+        private readonly ICreateReadUpdate<TEntity> decoratedCrud;
 
-        public CrudTransactional(ICreateReadUpdatedelete<TEntity> decoratedCrud)
+        public CrudTransactional(ICreateReadUpdate<TEntity> decoratedCrud)
         {
             this.decoratedCrud = decoratedCrud;
         }
@@ -19,15 +19,6 @@ namespace Segregate.Transactional
             using (var transaction = new TransactionScope())
             {
                 decoratedCrud.Create(entity);
-                transaction.Complete();
-            }
-        }
-
-        public void Delete(TEntity entity)
-        {
-            using (var transaction = new TransactionScope())
-            {
-                decoratedCrud.Delete(entity);
                 transaction.Complete();
             }
         }
