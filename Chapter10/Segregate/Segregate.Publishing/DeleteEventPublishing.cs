@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Segregate.Publishing
+﻿namespace Segregate.Publishing
 {
     using Common;
 

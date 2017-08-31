@@ -1,4 +1,4 @@
-﻿namespace Segregate.Common
+﻿namespace Segregate.Publishing
 {
     public interface IEventPublisher
     {
