@@ -1,22 +1,21 @@
 ﻿using Segregate.Common;
-using System;
 
 namespace Segregate.Gui
 {
     public class DeleteConfirmation<TEntity> : IDelete<TEntity>
     {
         private readonly IDelete<TEntity> decoratedDelete;
-        
-        public DeleteConfirmation(IDelete<TEntity> decoratedDelete)
+        private readonly IUserInteraction userInteraction;
+
+        public DeleteConfirmation(IDelete<TEntity> decoratedDelete, IUserInteraction userInteraction)
         {
             this.decoratedDelete = decoratedDelete;
+            this.userInteraction = userInteraction;
         }
 
         public void Delete(TEntity entity)
         {
-            Console.WriteLine("Are you shure you wnt to delete this entity? [y/N]");
-            var keyInfo = Console.ReadKey();
-            if (keyInfo.Key == ConsoleKey.Y)
+            if (userInteraction.Confirm("Are you shure you wnt to delete this entity?"))
             {
                 decoratedDelete.Delete(entity);
             }
