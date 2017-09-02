@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segregate.Audit", "Segregat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segregate.Publishing", "Segregate.Publishing\Segregate.Publishing.csproj", "{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segregate.Controllers", "Segregate.Controllers\Segregate.Controllers.csproj", "{56637BCB-D804-4FA4-A662-43FE45C31740}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FAFDD1F-FEA9-4E95-8527-91DBE43973BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56637BCB-D804-4FA4-A662-43FE45C31740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56637BCB-D804-4FA4-A662-43FE45C31740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56637BCB-D804-4FA4-A662-43FE45C31740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56637BCB-D804-4FA4-A662-43FE45C31740}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
