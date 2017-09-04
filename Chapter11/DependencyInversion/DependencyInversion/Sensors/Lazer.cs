@@ -1,9 +1,15 @@
 ﻿namespace DependencyInversion.Sensors
 {
-    public class Lazer : Sensor
+    public class Lazer : ISensor, IMovable
     {
-        public Lazer() : base("Lazer")
+        private float x, y;
+
+        public string GetName() => "lazer";
+
+        public void Move(float x, float y)
         {
+            this.x += x;
+            this.y += y;
         }
 
         public float Measure()

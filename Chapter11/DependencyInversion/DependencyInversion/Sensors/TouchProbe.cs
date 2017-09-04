@@ -1,12 +1,17 @@
 ﻿namespace DependencyInversion.Sensors
 {
-    public class TouchProbe : Sensor
+    public class TouchProbe : ISensor, IMovable, IRotatable, IHeightAdjustable
     {
         private float pitch, roll;
         private float height;
+        private float x, y;
 
-        public TouchProbe() : base("Touch probe")
+        public string GetName() => "touchprobe";
+
+        public void Move(float x, float y)
         {
+            this.x += x;
+            this.y += y;
         }
 
         public void Pitch(float pitch)

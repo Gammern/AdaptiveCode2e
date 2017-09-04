@@ -9,7 +9,7 @@ namespace DependencyInversion
     class Program
     {
         private delegate void CommandHandler(IEnumerable<string> parameters);
-        private static Sensor CurrentSensor;
+        private static ISensor CurrentSensor;
 
         static void Main(string[] args)
         {
@@ -32,17 +32,13 @@ namespace DependencyInversion
                 {
                     {"select", SelectTool },
                     {"move", Move },
-                    {"zoom", Zoom},
-                    {"capture-image", CaptureImage },
-                    {"measure-height", MeasureHeight},
-                    {"pitch", Pictch},
-                    {"roll", Roll},
-                    {"raise", Raise},
-                    {"lower", Lower},
-                    {"get-pressure", GetPressure},
-                    { "quit", _ => Environment.Exit(0) }
+                    {"measure", Measure},
+                    {"rotate", Rotate},
+                    {"adjust-height", AdjustHeight},
+                    {"quit", _ => Environment.Exit(0) }
                 };
                 handlers.Add("?", _ => PrintCommands(handlers.Keys));
+                handlers.Add("ah", AdjustHeight);
 
                 if (!handlers.Keys.Contains(command))
                 {
@@ -57,7 +53,7 @@ namespace DependencyInversion
 
         private static void SelectTool(IEnumerable<string> parameters)
         {
-            var sensorFactory = new Dictionary<string, Func<Sensor>>()
+            var sensorFactory = new Dictionary<string, Func<ISensor>>()
             {
                 { "camera", () => new Camera() },
                 { "lazer", () => new Lazer() },
@@ -85,235 +81,136 @@ namespace DependencyInversion
 
         private static void Move(IEnumerable<string> parameters)
         {
-            if (CurrentSensor != null)
+            var movableSensor = CurrentSensor as IMovable;
+            if (movableSensor != null)
             {
-                if (parameters.Count() != 2)
-                {
-                    Console.WriteLine("Command move requires two parameters");
-                }
-                else
+                if (parameters.Count() == 2)
                 {
                     try
                     {
                         float x, y;
                         x = float.Parse(parameters.First());
                         y = float.Parse(parameters.Skip(1).First());
-                        CurrentSensor.Move(x, y);
-                        Console.WriteLine($"Sensor {CurrentSensor} moved to x={x} y={y}");
+                        movableSensor.Move(x, y);
+                        Console.WriteLine($"Sensor {CurrentSensor.GetName()} moved to x={x} y={y}");
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine($"Wrong floating-point format. Try move {1.5} {3.5}");
+                        Console.WriteLine($"Wrong floating-point format according to current culture. Try move {9.99F} {9.99F}");
                     }
-
-                }
-            }
-            else
-            {
-                Console.WriteLine("Please select a sensor to use the move function");
-            }
-        }
-
-        private static void Zoom(IEnumerable<string> parameters)
-        {
-            var camera = CurrentSensor as Camera;
-            if (camera != null)
-            {
-                if (parameters.Count() != 1)
-                {
-                    Console.WriteLine("command zoom requires one parameter");
                 }
                 else
                 {
-                    if (float.TryParse(parameters.FirstOrDefault(), out float level))
-                    {
-                        camera.Zoom(level);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Invalid floating-point parameter. Try {1.5F}");
-                    }
+                    Console.WriteLine($"Command move requires two parameters.\n\tSyntax: move {9.99F} {9.99F}");
                 }
             }
             else
             {
-                Console.WriteLine("You must select camera to use zoom function");
+                Console.WriteLine("Please select a IMovable sensor to use the move function");
             }
         }
 
-        private static void CaptureImage(IEnumerable<string> parameters)
+        private static void Measure(IEnumerable<string> parameters)
         {
-            var camera = CurrentSensor as Camera;
-            if (camera != null)
+            var measurableSensor = CurrentSensor as IMeasurable;
+            if (measurableSensor != null)
             {
                 if (parameters.Any())
                 {
-                    Console.WriteLine("command capture-image shouldn't have parameters");
+                    Console.WriteLine("Command measure don't have parameters");
                 }
                 else
                 {
-                    camera.Capture();
-                    Console.WriteLine($"Image captured from {camera}");
+                    var measure = measurableSensor.Measure();
+                    Console.WriteLine($"{CurrentSensor.GetName()} measure is: {measure}");
                 }
             }
             else
             {
-                Console.WriteLine("You must select camera to capture an image");
-            }
-
-        }
-
-        private static void MeasureHeight(IEnumerable<string> parameters)
-        {
-            var lazer = CurrentSensor as Lazer;
-            if (lazer != null)
-            {
-                if (parameters.Any())
-                {
-                    Console.WriteLine("command measure-height shouldn't have parameters");
-                }
-                else
-                {
-                    var value = lazer.Measure();
-                    Console.WriteLine($"Laser measure returned: {value}");
-                }
-            }
-            else
-            {
-                Console.WriteLine("You must select lazer to measure height");
+                Console.WriteLine("You must select a IMeasurable to measure");
             }
         }
 
-        private static void Pictch(IEnumerable<string> parameters)
+        private static void Rotate(IEnumerable<string> parameters)
         {
-            var touchProble = CurrentSensor as TouchProbe;
-            if (touchProble != null)
+            var rotatableSensor = CurrentSensor as IRotatable;
+            if (rotatableSensor != null)
             {
-                if (parameters.Count() != 1)
+                if (parameters.Count() == 2)
                 {
-                    Console.WriteLine("command pitch requires one parameter");
+                    var rotationDirection = parameters.First();
+                    var rotationValue = parameters.Skip(1).First();
+                    try
+                    {
+                        switch (rotationDirection)
+                        {
+                            case "pitch":
+                                rotatableSensor.Pitch(float.Parse(rotationValue));
+                                Console.WriteLine($"{CurrentSensor.GetName()} pitched.");
+                                break;
+                            case "roll":
+                                rotatableSensor.Roll(float.Parse(rotationValue));
+                                Console.WriteLine($"{CurrentSensor.GetName()} rolled.");
+                                break;
+                            default:
+                                Console.WriteLine($"First parameter to rotate must be 'pitch' or 'roll'.\n\tSyntax: rotate [pitch|roll] {9.99F}");
+                                break;
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine($"Second parameter {rotationValue} is not a valid float according to current culture. Try {9.99F}");
+                    }
                 }
                 else
                 {
-                    if (float.TryParse(parameters.First(), out float pitch))
-                    {
-                        touchProble.Pitch(pitch);
-                        Console.WriteLine($"touchprobe pitched by {pitch}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Invalid float parameter {parameters.First()}. Try {1.9}");
-                    }
+                    Console.WriteLine($"Command rotate requires two parameter.\n\tSyntax: rotate [pitch|roll] {9.99F}");
                 }
             }
             else
             {
-                Console.WriteLine("You must select touchprobe to use pitch");
+                Console.WriteLine("You must select a IRotatable to use rotate");
             }
         }
 
-        private static void Roll(IEnumerable<string> parameters)
+        private static void AdjustHeight(IEnumerable<string> parameters)
         {
-            var touchProble = CurrentSensor as TouchProbe;
-            if (touchProble != null)
+            var heightAdjustableSensor = CurrentSensor as IHeightAdjustable;
+            if (heightAdjustableSensor == null)
             {
-                if (parameters.Count() != 1)
-                {
-                    Console.WriteLine("command roll requires one parameter");
-                }
-                else
-                {
-                    if (float.TryParse(parameters.First(), out float roll))
-                    {
-                        touchProble.Roll(roll);
-                        Console.WriteLine($"touchprobe rolled by {roll}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Invalid float parameter {parameters.First()}. Try {1.9}");
-                    }
-                }
+                Console.WriteLine($"Current sensor {CurrentSensor?.GetName() ?? "null"} is not height adjustable");
+                return;
             }
-            else
-            {
-                Console.WriteLine("You must select touchprobe to use roll");
-            }
-        }
 
-        private static void Raise(IEnumerable<string> parameters)
-        {
-            var touchProble = CurrentSensor as TouchProbe;
-            if (touchProble != null)
+            if (parameters.Count() == 2)
             {
-                if (parameters.Count() != 1)
+                var direction = parameters.First();
+                var height = parameters.Skip(1).First();
+                try
                 {
-                    Console.WriteLine("command raise requires one parameter");
+                    switch (direction)
+                    {
+                        case "raise":
+                            heightAdjustableSensor.Raise(float.Parse(height));
+                            Console.WriteLine($"{CurrentSensor.GetName()} raised.");
+                            break;
+                        case "lower":
+                            heightAdjustableSensor.Lower(float.Parse(height));
+                            Console.WriteLine($"{CurrentSensor.GetName()} lowered.");
+                            break;
+                        default:
+                            Console.WriteLine("First parameter to height adjustment must be 'raise' or 'lower'");
+                            break;
+                    }
                 }
-                else
+                catch (FormatException)
                 {
-                    if (float.TryParse(parameters.First(), out float height))
-                    {
-                        touchProble.Raise(height);
-                        Console.WriteLine($"touchprobe raised by {height}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Invalid float parameter {parameters.First()}. Try {1.9}");
-                    }
+                    Console.WriteLine($"Second parameter {height} is not a valid float according to current culture. Try {9.99F}");
                 }
             }
             else
             {
-                Console.WriteLine("You must select touchprobe to use raise");
-            }
-        }
-
-        private static void Lower(IEnumerable<string> parameters)
-        {
-            var touchProble = CurrentSensor as TouchProbe;
-            if (touchProble != null)
-            {
-                if (parameters.Count() != 1)
-                {
-                    Console.WriteLine("command lower requires one parameter");
-                }
-                else
-                {
-                    if (float.TryParse(parameters.First(), out float height))
-                    {
-                        touchProble.Lower(height);
-                        Console.WriteLine($"touchprobe lowered by {height}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Invalid float parameter {parameters.First()}. Try {1.9}");
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("You must select touchprobe to use lower");
-            }
-        }
-
-        private static void GetPressure(IEnumerable<string> parameters)
-        {
-            var touchProble = CurrentSensor as TouchProbe;
-            if (touchProble != null)
-            {
-                if (parameters.Any())
-                {
-                    Console.WriteLine("command get-pressure don't have parameters");
-                }
-                else
-                {
-                    var pressure = touchProble.GetPressure();
-                    Console.WriteLine($"touchprobe pressure is: {pressure.Value}psi");
-                }
-            }
-            else
-            {
-                Console.WriteLine("You must select touchprobe to measure pressure");
+                Console.WriteLine($"Parameter mismatch.\n\tSyntax: adjustheight [raise|lower] {9.99F}");
             }
         }
 

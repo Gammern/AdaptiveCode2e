@@ -1,14 +1,27 @@
 ﻿namespace DependencyInversion.Sensors
 {
-    public class Camera : Sensor
+    public class Camera : ISensor, IMovable, IHeightAdjustable
     {
         private float zoomLevel;
+        private float x, y;
 
-        public Camera() : base("Camera")
+        public string GetName() => "camera";
+
+        public void Move(float x, float y)
         {
+            this.x += x;
+            this.y += y;
         }
 
-        public void Zoom(float level) => zoomLevel = level;
+        public void Raise(float height)
+        {
+            zoomLevel += height;
+        }
+
+        public void Lower(float height)
+        {
+            zoomLevel -= height;
+        }
 
         public object Capture()
         {
