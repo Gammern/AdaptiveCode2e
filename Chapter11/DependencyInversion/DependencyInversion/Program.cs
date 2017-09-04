@@ -57,7 +57,8 @@ namespace DependencyInversion
             {
                 { "camera", () => new Camera() },
                 { "lazer", () => new Lazer() },
-                { "touchprobe", () => new TouchProbe() }
+                { "touchprobe", () => new TouchProbe() },
+                { "microfone", () => new Microfone() }
             };
 
             if (parameters.Count() == 1)
