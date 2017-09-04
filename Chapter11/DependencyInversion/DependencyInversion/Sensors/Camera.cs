@@ -1,6 +1,8 @@
-﻿namespace DependencyInversion.Sensors
+﻿using System.IO;
+
+namespace DependencyInversion.Sensors
 {
-    public class Camera : ISensor, IMovable, IHeightAdjustable
+    public class Camera : ISensor, IMovable, IHeightAdjustable, IMeasurable
     {
         private float zoomLevel;
         private float x, y;
@@ -23,9 +25,9 @@
             zoomLevel -= height;
         }
 
-        public object Capture()
+        public void WriteMeasurement(TextWriter writer)
         {
-            return "This is a .NET core image";
+            writer.WriteLine("This is a .NET core image");
         }
     }
 }

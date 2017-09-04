@@ -1,16 +1,13 @@
-﻿namespace DependencyInversion.Sensors
+﻿using System.IO;
+
+namespace DependencyInversion.Sensors
 {
-    public class Microfone : ISensor, IRotatable
+    public class Microfone : ISensor, IRotatable, IMeasurable
     {
         private float pitch;
         private float roll;
 
         public string GetName() => "microfone";
-
-        public SoundPressure Measure()
-        {
-            return new SoundPressure(85.3F);
-        }
 
         public void Pitch(float pitch)
         {
@@ -21,15 +18,10 @@
         {
             this.roll += roll;
         }
-    }
 
-    public class SoundPressure
-    {
-        public SoundPressure(float value)
+        public void WriteMeasurement(TextWriter writer)
         {
-            this.Value = value;
+            writer.WriteLine($"Sensor {GetName()} at {85.3F}dB");
         }
-
-        public float Value { get; private set; }
     }
 }

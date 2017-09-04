@@ -1,6 +1,8 @@
-﻿namespace DependencyInversion.Sensors
+﻿using System.IO;
+
+namespace DependencyInversion.Sensors
 {
-    public class TouchProbe : ISensor, IMovable, IRotatable, IHeightAdjustable
+    public class TouchProbe : ISensor, IMovable, IRotatable, IHeightAdjustable, IMeasurable
     {
         private float pitch, roll;
         private float height;
@@ -34,19 +36,9 @@
             height -= height;
         }
 
-        public PoundsPerSquareInch GetPressure()
+        public void WriteMeasurement(TextWriter writer)
         {
-            return new PoundsPerSquareInch(13.9F);
+            writer.WriteLine($"Sensor {GetName()} at {13.9F}psi");
         }
-    }
-
-    public struct PoundsPerSquareInch
-    {
-        public PoundsPerSquareInch(float value)
-        {
-            Value = value;
-        }
-
-        public float Value { get; private set; }
     }
 }

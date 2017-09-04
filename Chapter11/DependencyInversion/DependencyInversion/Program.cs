@@ -118,12 +118,11 @@ namespace DependencyInversion
             {
                 if (parameters.Any())
                 {
-                    Console.WriteLine("Command measure don't have parameters");
+                    Console.WriteLine("Command measure don't take any parameters");
                 }
                 else
                 {
-                    var measure = measurableSensor.Measure();
-                    Console.WriteLine($"{CurrentSensor.GetName()} measure is: {measure}");
+                    measurableSensor.WriteMeasurement(Console.Out);
                 }
             }
             else

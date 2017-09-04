@@ -1,7 +1,9 @@
-﻿namespace DependencyInversion.Sensors
+﻿using System.IO;
+
+namespace DependencyInversion.Sensors
 {
     public interface IMeasurable
     {
-        float Measure();
+        void WriteMeasurement(TextWriter writer);
     }
 }
